@@ -1,9 +1,6 @@
 package NombresPremiers;
 
-import java.io.Console;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.logging.ConsoleHandler;
 
 /**
  * Classe permettant l'initialisation du programme
@@ -15,16 +12,22 @@ import java.util.logging.ConsoleHandler;
 public class Initializer {
 
 	private ArrayList<Integer> primeNumbers = new ArrayList<Integer>();
-	private ArrayList<Integer> numbersToCheck = new ArrayList<>();
+	// private ArrayList<Integer> numbersToCheck = new ArrayList<>();
+	private int primeNumbersIterator = 2;
+	private int numberToCheck = 7;
 
 	// Getters
 	public ArrayList<Integer> getPrimeNumbers() {
 		return primeNumbers;
 	}
-
-	public ArrayList<Integer> getNumbersToCheck() {
-		return numbersToCheck;
+	
+	public int getNumberToCheck() {
+		return numberToCheck;
 	}
+
+	// public ArrayList<Integer> getNumbersToCheck() {
+	// return numbersToCheck;
+	// }
 
 	/**
 	 * Méthode d'initialisation des listes.
@@ -37,20 +40,6 @@ public class Initializer {
 		primeNumbers.add(2);
 		primeNumbers.add(3);
 		primeNumbers.add(5);
-
-	}
-
-	public void createListOfNumbersToCheck() {
-
-		int numberToAdd;
-
-		for (numberToAdd = 7; numberToAdd < 395;) {
-
-			numbersToCheck.add(numberToAdd);
-			numberToAdd = numberToAdd + 4;
-			numbersToCheck.add(numberToAdd);
-			numberToAdd = numberToAdd + 2;
-		}
 
 	}
 
@@ -74,8 +63,8 @@ public class Initializer {
 
 		if (checkMe % 2 == 0)
 			return false;
-		for (int i = 2; i * i <= checkMe; i++) {
-			if (checkMe % i == 0)
+		for (primeNumbersIterator = 2; primeNumbersIterator * primeNumbersIterator <= checkMe; primeNumbersIterator++) {
+			if (checkMe % primeNumbersIterator == 0)
 				return false;
 		}
 
@@ -91,6 +80,24 @@ public class Initializer {
 		}
 
 		return true;
+	}
+
+	public Integer numberToChek() {
+		
+			switch (numberToCheck % 6) {
+			case 1:
+				numberToCheck = numberToCheck + 4;
+				break;
+			case 5:
+				numberToCheck = numberToCheck + 2;
+				break;
+
+			default:
+				break;
+			
+		}
+
+		return numberToCheck;
 	}
 
 }
